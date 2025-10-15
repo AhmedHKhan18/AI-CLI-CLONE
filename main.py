@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 import sys
 import os
-import rich
+# import rich
 
 load_dotenv()
 
@@ -74,7 +74,7 @@ async def main():
             input_guardrails= [security_guardrail]
         )
 
-        rich.print("🚀 AI CLI is ready! Type 'exit' or 'quit' to close.\n")
+        print("🚀 AI CLI is ready! Type 'exit' or 'quit' to close.\n")
 
     # if len(sys.argv) > 1:
     #     user_input = " ".join(sys.argv[1:])
@@ -85,7 +85,7 @@ async def main():
             user_input = await get_user_input_interactive()
 
             if user_input.lower().strip() in {'exit', 'quit'}:
-                rich.print("👋 Exiting the session. Goodbye!")
+                print("👋 Exiting the session. Goodbye!")
                 break
             try:
                 result = Runner.run_streamed(
@@ -95,15 +95,15 @@ async def main():
                 )
                 async for event in result.stream_events():
                     if event.type == 'raw_response_event' and isinstance(event.data, ResponseTextDeltaEvent):
-                        rich.print(event.data.delta, end="", flush=True)
+                        print(event.data.delta, end="", flush=True)
             except InputGuardrailTripwireTriggered:
-                rich.print("Sorry, I can't help you with that.")
+                print("Sorry, I can't help you with that.")
         except (KeyboardInterrupt, asyncio.CancelledError):
-            rich.print("\n👋 Session closed by user.")
+            print("\n👋 Session closed by user.")
             break
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, asyncio.CancelledError):
-        rich.print("\n👋 Session closed by user.")
+        print("\n👋 Session closed by user.")
