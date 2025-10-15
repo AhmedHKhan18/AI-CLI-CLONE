@@ -1,6 +1,6 @@
 {
   "name": "ai-cli-clone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "license": "ISC",
   "author": "",
@@ -9,5 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": "./main.py"
+  "bin": {
+    "ai-cli-clone": "./index.js"
+  }
 }
