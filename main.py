@@ -63,18 +63,17 @@ async def get_user_input_interactive(prompt_text="\nEnter prompt:\n "):
 
 
 async def main():
-    with trace("AI CLI Clone"):
 
-        triage_agent = Agent(
-            name = 'Triage Agent',
-            instructions =
-            """ You are a best querry analyzer your task is to analyze the querry of the user. If the user wants to ask any basic or any sort of querry delegate the task to basic querry agent. If the poetry is Narrative delegate the poetry to the narrative poetry agent. If the poetry is dramatic delegate the poetry to narrative agent. If the poetry is not in any of these categories then gracefully apologies the user. 
-            """,
-            handoffs= [basic_querry_agent, coding_agent],
-            input_guardrails= [security_guardrail]
-        )
+    triage_agent = Agent(
+        name = 'Triage Agent',
+        instructions =
+        """ You are a best querry analyzer your task is to analyze the querry of the user. If the user wants to ask any basic or any sort of querry delegate the task to basic querry agent. If the poetry is Narrative delegate the poetry to the narrative poetry agent. If the poetry is dramatic delegate the poetry to narrative agent. If the poetry is not in any of these categories then gracefully apologies the user. 
+        """,
+        handoffs= [basic_querry_agent, coding_agent],
+        input_guardrails= [security_guardrail]
+    )
 
-        print("🚀 AI CLI is ready! Type 'exit' or 'quit' to close.\n")
+    print("🚀 AI CLI is ready! Type 'exit' or 'quit' to close.\n")
 
     # if len(sys.argv) > 1:
     #     user_input = " ".join(sys.argv[1:])
