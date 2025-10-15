@@ -3,8 +3,8 @@
   "version": "1.0.1",
   "description": "",
   "license": "ISC",
-  "author": "",
-  "type": "commonjs",
+  "author": "Ahmed Hassan Khan",
+  "type": "module",
   "main": "main.py",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
